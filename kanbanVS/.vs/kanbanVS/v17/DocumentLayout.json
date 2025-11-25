@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Insti\\projecte\\Kanban\\KanBan\\kanbanVS\\",
+  "WorkspaceRootPath": "C:\\Users\\erica\\Desktop\\Trabajos\\DAM2_0492_Projecte_intermodular\\ProyectoKanban\\KanBan\\kanbanVS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CB6A7017-4537-47E6-8A95-D11B3B91EB3D}|kanbanVS\\kanbanVS.csproj|c:\\insti\\projecte\\kanban\\kanban\\kanbanvs\\kanbanvs\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CB6A7017-4537-47E6-8A95-D11B3B91EB3D}|kanbanVS\\kanbanVS.csproj|c:\\users\\erica\\desktop\\trabajos\\dam2_0492_projecte_intermodular\\proyectokanban\\kanban\\kanbanvs\\kanbanvs\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CB6A7017-4537-47E6-8A95-D11B3B91EB3D}|kanbanVS\\kanbanVS.csproj|solutionrelative:kanbanvs\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB6A7017-4537-47E6-8A95-D11B3B91EB3D}|kanbanVS\\kanbanVS.csproj|c:\\insti\\projecte\\kanban\\kanban\\kanbanvs\\kanbanvs\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CB6A7017-4537-47E6-8A95-D11B3B91EB3D}|kanbanVS\\kanbanVS.csproj|C:\\Users\\erica\\Desktop\\Trabajos\\DAM2_0492_Projecte_intermodular\\ProyectoKanban\\KanBan\\kanbanVS\\kanbanvs\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB6A7017-4537-47E6-8A95-D11B3B91EB3D}|kanbanVS\\kanbanVS.csproj|solutionrelative:kanbanvs\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -28,9 +28,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Insti\\projecte\\Kanban\\KanBan\\kanbanVS\\kanbanVS\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\erica\\Desktop\\Trabajos\\DAM2_0492_Projecte_intermodular\\ProyectoKanban\\KanBan\\kanbanVS\\kanbanVS\\MainWindow.xaml",
               "RelativeDocumentMoniker": "kanbanVS\\MainWindow.xaml",
-              "ToolTip": "C:\\Insti\\projecte\\Kanban\\KanBan\\kanbanVS\\kanbanVS\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\erica\\Desktop\\Trabajos\\DAM2_0492_Projecte_intermodular\\ProyectoKanban\\KanBan\\kanbanVS\\kanbanVS\\MainWindow.xaml",
               "RelativeToolTip": "kanbanVS\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-12T18:08:39.393Z",
@@ -40,14 +40,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Insti\\projecte\\Kanban\\KanBan\\kanbanVS\\kanbanVS\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\erica\\Desktop\\Trabajos\\DAM2_0492_Projecte_intermodular\\ProyectoKanban\\KanBan\\kanbanVS\\kanbanVS\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "kanbanVS\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Insti\\projecte\\Kanban\\KanBan\\kanbanVS\\kanbanVS\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\erica\\Desktop\\Trabajos\\DAM2_0492_Projecte_intermodular\\ProyectoKanban\\KanBan\\kanbanVS\\kanbanVS\\MainWindow.xaml.cs",
               "RelativeToolTip": "kanbanVS\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T18:08:38.445Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T18:08:38.445Z"
             }
           ]
         },
