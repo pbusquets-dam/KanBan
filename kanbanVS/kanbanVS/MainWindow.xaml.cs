@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,35 @@ namespace kanbanVS
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<Task> ToDoTasks { get; set; }
+        public ObservableCollection<Task> InProgressTasks { get; set; }
+        public ObservableCollection<Task> DoneTasks { get; set; }
+
         public MainWindow()
         {
+
             InitializeComponent();
+            ToDoTasks = new ObservableCollection<Task>();
+            InProgressTasks = new ObservableCollection<Task>();
+            DoneTasks = new ObservableCollection<Task>();
+            ToDoTasks.Add(new Task("PUTA"));
+            InProgressTasks.Add(new Task("PUTAPUTA"));
+            DoneTasks.Add(new Task("PUTAPUTAPUTA"));
+            this.DataContext = this;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NewTaskWindow taskDialog = new NewTaskWindow();
+            bool? dialogResult = taskDialog.ShowDialog();
+            if (dialogResult == true)
+            {
+                string taskContent = taskDialog.NewTaskText;
+                if (!string.IsNullOrWhiteSpace(taskContent))
+                {
+                    ToDoTasks.Add(new Task(taskContent));
+                }
+            }
         }
     }
 }
