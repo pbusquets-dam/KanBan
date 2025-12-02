@@ -3,7 +3,6 @@ using System.ComponentModel;
 
 public class Task : INotifyPropertyChanged
 {
-    public bool marcat;
     public string text;
     public string assignedTo;
     public DateTime startDate;
@@ -20,15 +19,6 @@ public class Task : INotifyPropertyChanged
         }
     }
 
-    public bool Marcat
-    {
-        get { return marcat; }
-        set
-        {
-            marcat = value;
-            OnPropertyChanged(nameof(Marcat));
-        }
-    }
 
     public string Text
     {
@@ -83,7 +73,6 @@ public class Task : INotifyPropertyChanged
     public Task(string textinicial)
     {
         Text = textinicial;
-        Marcat = false;
         AssignedTo = "No assignada";
         StartDate = DateTime.Today;
         EndDate = DateTime.Today.AddDays(7);

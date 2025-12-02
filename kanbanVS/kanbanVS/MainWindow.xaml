@@ -9,7 +9,7 @@
         Background="#F5F5F5">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -38,19 +38,49 @@
                 <Setter Property="Foreground" Value="#333333"/>
                 <Setter Property="Margin" Value="0,0,0,10"/>
             </Style>
+
+            <Style TargetType="Button" x:Key="HeaderButtonStyle">
+                <Setter Property="Width" Value="30"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Foreground" Value="#333333"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="#CCCCCC" Direction="270" ShadowDepth="1" BlurRadius="5" Opacity="0.6"/>
+                    </Setter.Value>
+                </Setter>
+                
+            </Style>
         </Grid.Resources>
 
-        <!-- TO DO COLUMN -->
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,10">
+            <Button Style="{StaticResource HeaderButtonStyle}" HorizontalAlignment="Left" Click="Button_Click">
+                <TextBlock FontSize="15">📝</TextBlock>
+            </Button>
+            <Button Style="{StaticResource HeaderButtonStyle}" HorizontalAlignment="Right" Click="Button_Click1">
+                <TextBlock FontSize="15">⚙️</TextBlock>
+            </Button>
+        </Grid>
+
         <Border Grid.Row="1" Grid.Column="0">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="181*"/>
+                    <ColumnDefinition Width="96*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="To Do" Style="{StaticResource HeaderStyle}"/>
+                <TextBlock Grid.Row="0" Text="To Do" Style="{StaticResource HeaderStyle}" Grid.ColumnSpan="2"/>
 
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer x:Name="ToDoScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto" AllowDrop="True" Drop="TasksColumn_Drop" DragOver="TasksColumn_DragOver" Grid.ColumnSpan="2">
                     <ItemsControl ItemsSource="{Binding ToDoTasks}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -66,16 +96,14 @@
                                         Padding="10"
                                         Margin="0,5"
                                         Background="White"
-                                        MouseLeftButtonUp="TaskBorderClick"
+                                        MouseMove="TaskBorder_MouseMove"
                                         Tag="{Binding}"
                                         HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Vertical">
-                                        <!-- Primera fila: prioridad + texto -->
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                             <Ellipse Width="12" Height="12" Fill="{Binding PriorityColor}" Margin="0,0,8,0"/>
-                                            <TextBlock Text="{Binding Text}" FontWeight="SemiBold" Foreground="#333333" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding Text}" FontWeight="SemiBold" Foreground="#333333" VerticalAlignment="Center" TextWrapping="Wrap"/>
                                         </StackPanel>
-                                        <!-- Segunda fila: responsable y fechas -->
                                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                             <TextBlock Text="{Binding AssignedTo}" Foreground="#555555"/>
                                             <TextBlock Text=" • " Foreground="#999999" Margin="5,0"/>
@@ -91,7 +119,6 @@
             </Grid>
         </Border>
 
-        <!-- IN PROGRESS COLUMN -->
         <Border Grid.Row="1" Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -101,7 +128,7 @@
 
                 <TextBlock Grid.Row="0" Text="In Progress" Style="{StaticResource HeaderStyle}"/>
 
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer x:Name="InProgressScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto" AllowDrop="True" Drop="TasksColumn_Drop" DragOver="TasksColumn_DragOver">
                     <ItemsControl ItemsSource="{Binding InProgressTasks}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -117,16 +144,14 @@
                                         Padding="10"
                                         Margin="0,5"
                                         Background="White"
-                                        MouseLeftButtonUp="TaskBorderClick"
+                                        MouseMove="TaskBorder_MouseMove"
                                         Tag="{Binding}"
                                         HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Vertical">
-                                        <!-- Primera fila: prioridad + texto -->
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                             <Ellipse Width="12" Height="12" Fill="{Binding PriorityColor}" Margin="0,0,8,0"/>
                                             <TextBlock Text="{Binding Text}" FontWeight="SemiBold" Foreground="#333333" VerticalAlignment="Center"/>
                                         </StackPanel>
-                                        <!-- Segunda fila: responsable y fechas -->
                                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                             <TextBlock Text="{Binding AssignedTo}" Foreground="#555555"/>
                                             <TextBlock Text=" • " Foreground="#999999" Margin="5,0"/>
@@ -142,7 +167,6 @@
             </Grid>
         </Border>
 
-        <!-- DONE COLUMN -->
         <Border Grid.Row="1" Grid.Column="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -152,7 +176,7 @@
 
                 <TextBlock Grid.Row="0" Text="Done" Style="{StaticResource HeaderStyle}"/>
 
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer x:Name="DoneScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto" AllowDrop="True" Drop="TasksColumn_Drop" DragOver="TasksColumn_DragOver">
                     <ItemsControl ItemsSource="{Binding DoneTasks}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -168,16 +192,14 @@
                                         Padding="10"
                                         Margin="0,5"
                                         Background="White"
-                                        MouseLeftButtonUp="TaskBorderClick"
+                                        MouseMove="TaskBorder_MouseMove"
                                         Tag="{Binding}"
                                         HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Vertical">
-                                        <!-- Primera fila: prioridad + texto -->
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                             <Ellipse Width="12" Height="12" Fill="{Binding PriorityColor}" Margin="0,0,8,0"/>
                                             <TextBlock Text="{Binding Text}" FontWeight="SemiBold" Foreground="#333333" VerticalAlignment="Center"/>
                                         </StackPanel>
-                                        <!-- Segunda fila: responsable y fechas -->
                                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                             <TextBlock Text="{Binding AssignedTo}" Foreground="#555555"/>
                                             <TextBlock Text=" • " Foreground="#999999" Margin="5,0"/>
@@ -193,24 +215,5 @@
             </Grid>
         </Border>
 
-        <!-- HEADER BUTTONS -->
-        <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,10">
-            <Button Width="30" HorizontalAlignment="Right">
-                <TextBlock FontSize="15">📝</TextBlock>
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button Width="30" HorizontalAlignment="Left" Click="Button_Click">
-                <TextBlock FontSize="15">📝</TextBlock>
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </Grid>
     </Grid>
 </Window>

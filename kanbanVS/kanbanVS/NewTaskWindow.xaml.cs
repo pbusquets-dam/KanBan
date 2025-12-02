@@ -18,15 +18,12 @@ namespace kanbanVS
         public NewTaskWindow()
         {
             InitializeComponent();
-            //Fer que automaticament tinguis seleccionada la nova finestra
             this.Loaded += (sender, e) => TaskTextBox.Focus();
-            this.Loaded += (sender, e) => DescriptionTextBox.Focus();
         }
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
             NewTaskNameText = TaskTextBox.Text;
-            NewTaskDescText = DescriptionTextBox.Text;
             this.DialogResult = true;
         }
 
