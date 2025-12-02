@@ -9,10 +9,10 @@
         Background="#F5F5F5">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -20,7 +20,6 @@
         </Grid.ColumnDefinitions>
 
         <Grid.Resources>
-
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="8"/>
                 <Setter Property="Padding" Value="15"/>
@@ -41,59 +40,160 @@
             </Style>
         </Grid.Resources>
 
+        <!-- TO DO COLUMN -->
         <Border Grid.Row="1" Grid.Column="0">
-            <StackPanel>
-                <TextBlock Text="To Do" Style="{StaticResource HeaderStyle}"/>
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="To Do" Style="{StaticResource HeaderStyle}"/>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                     <ItemsControl ItemsSource="{Binding ToDoTasks}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="0,5">
-                                    <CheckBox IsChecked="{Binding Marcat}" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding Text}" VerticalAlignment="Center"/>
-                                </StackPanel>
+                                <Border x:Name="TaskBorder"
+                                        BorderBrush="#E0E0E0"
+                                        BorderThickness="1.5"
+                                        CornerRadius="6"
+                                        Padding="10"
+                                        Margin="0,5"
+                                        Background="White"
+                                        MouseLeftButtonUp="TaskBorderClick"
+                                        Tag="{Binding}"
+                                        HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Vertical">
+                                        <!-- Primera fila: prioridad + texto -->
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Ellipse Width="12" Height="12" Fill="{Binding PriorityColor}" Margin="0,0,8,0"/>
+                                            <TextBlock Text="{Binding Text}" FontWeight="SemiBold" Foreground="#333333" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        <!-- Segunda fila: responsable y fechas -->
+                                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                            <TextBlock Text="{Binding AssignedTo}" Foreground="#555555"/>
+                                            <TextBlock Text=" • " Foreground="#999999" Margin="5,0"/>
+                                            <TextBlock Text="{Binding StartDate, StringFormat='Inicio: {0:d}'}" Foreground="#555555" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding EndDate, StringFormat='Fin: {0:d}'}" Foreground="#555555"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
-            </StackPanel>
+            </Grid>
         </Border>
 
+        <!-- IN PROGRESS COLUMN -->
         <Border Grid.Row="1" Grid.Column="1">
-            <StackPanel>
-                <TextBlock Text="In Progress" Style="{StaticResource HeaderStyle}"/>
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="In Progress" Style="{StaticResource HeaderStyle}"/>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                     <ItemsControl ItemsSource="{Binding InProgressTasks}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="0,5">
-                                    <CheckBox IsChecked="{Binding Marcat}" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding Text}" VerticalAlignment="Center"/>
-                                </StackPanel>
+                                <Border x:Name="TaskBorder"
+                                        BorderBrush="#E0E0E0"
+                                        BorderThickness="1.5"
+                                        CornerRadius="6"
+                                        Padding="10"
+                                        Margin="0,5"
+                                        Background="White"
+                                        MouseLeftButtonUp="TaskBorderClick"
+                                        Tag="{Binding}"
+                                        HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Vertical">
+                                        <!-- Primera fila: prioridad + texto -->
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Ellipse Width="12" Height="12" Fill="{Binding PriorityColor}" Margin="0,0,8,0"/>
+                                            <TextBlock Text="{Binding Text}" FontWeight="SemiBold" Foreground="#333333" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        <!-- Segunda fila: responsable y fechas -->
+                                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                            <TextBlock Text="{Binding AssignedTo}" Foreground="#555555"/>
+                                            <TextBlock Text=" • " Foreground="#999999" Margin="5,0"/>
+                                            <TextBlock Text="{Binding StartDate, StringFormat='Inicio: {0:d}'}" Foreground="#555555" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding EndDate, StringFormat='Fin: {0:d}'}" Foreground="#555555"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
-            </StackPanel>
+            </Grid>
         </Border>
 
+        <!-- DONE COLUMN -->
         <Border Grid.Row="1" Grid.Column="2">
-            <StackPanel>
-                <TextBlock Style="{StaticResource HeaderStyle}" Text="Done"/>
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Done" Style="{StaticResource HeaderStyle}"/>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                     <ItemsControl ItemsSource="{Binding DoneTasks}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="0,5">
-                                    <CheckBox IsChecked="{Binding Marcat}" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding Text}" VerticalAlignment="Center"/>
-                                </StackPanel>
+                                <Border x:Name="TaskBorder"
+                                        BorderBrush="#E0E0E0"
+                                        BorderThickness="1.5"
+                                        CornerRadius="6"
+                                        Padding="10"
+                                        Margin="0,5"
+                                        Background="White"
+                                        MouseLeftButtonUp="TaskBorderClick"
+                                        Tag="{Binding}"
+                                        HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Vertical">
+                                        <!-- Primera fila: prioridad + texto -->
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Ellipse Width="12" Height="12" Fill="{Binding PriorityColor}" Margin="0,0,8,0"/>
+                                            <TextBlock Text="{Binding Text}" FontWeight="SemiBold" Foreground="#333333" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        <!-- Segunda fila: responsable y fechas -->
+                                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                            <TextBlock Text="{Binding AssignedTo}" Foreground="#555555"/>
+                                            <TextBlock Text=" • " Foreground="#999999" Margin="5,0"/>
+                                            <TextBlock Text="{Binding StartDate, StringFormat='Inicio: {0:d}'}" Foreground="#555555" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding EndDate, StringFormat='Fin: {0:d}'}" Foreground="#555555"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
-            </StackPanel>
+            </Grid>
         </Border>
+
+        <!-- HEADER BUTTONS -->
         <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,10">
             <Button Width="30" HorizontalAlignment="Right">
                 <TextBlock FontSize="15">📝</TextBlock>
