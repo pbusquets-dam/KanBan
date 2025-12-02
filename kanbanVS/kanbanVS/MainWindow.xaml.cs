@@ -51,5 +51,15 @@ namespace kanbanVS
                 }
             }
         }
+        private void TaskBorderClick(object sender, MouseButtonEventArgs e)
+        {
+            var border = sender as Border;
+            var task = border.Tag as Task;
+
+            task.Marcat = !task.Marcat;
+
+            border.Background = task.Marcat ? Brushes.LightGray : Brushes.White;
+        }
+
     }
 }
