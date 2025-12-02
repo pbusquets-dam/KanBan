@@ -8,12 +8,12 @@ namespace kanbanVS
 {
     public partial class NewTaskWindow : Window
     {
-<<<<<<< HEAD
+
         public string NewTaskNameText { get; private set; }
         public string NewTaskDescText { get; private set; }
-=======
+
         public string NewTaskText { get; set; }
->>>>>>> 9c19b311a084ce5f486413fdf8ad28ba12d9eaf9
+
 
         public NewTaskWindow()
         {
