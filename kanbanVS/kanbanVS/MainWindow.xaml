@@ -63,7 +63,7 @@
                 <TextBlock FontSize="15">📝</TextBlock>
             </Button>
             <Button Style="{StaticResource HeaderButtonStyle}" HorizontalAlignment="Right" Click="Button_Click1">
-                <TextBlock FontSize="15">⚙️</TextBlock>
+                <TextBlock FontSize="15">👨🏻‍💼</TextBlock>
             </Button>
         </Grid>
 

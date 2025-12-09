@@ -1,13 +1,22 @@
 ﻿using System;
 using System.ComponentModel;
 
+
 public class Task : INotifyPropertyChanged
 {
+    public enum State
+    {
+        ToDo,
+        Doing,
+        Done
+
+    }
     public string text;
     public cResponsable assignedTo;
     public DateTime startDate;
     public DateTime endDate;
     public string priorityColor;
+    private State status;
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -70,10 +79,23 @@ public class Task : INotifyPropertyChanged
         }
     }
 
+    public State Status
+    {
+        get { return status; }
+        set
+        {
+            if (status != value) 
+            {
+                status = value;
+                OnPropertyChanged(nameof(Status));
+            }
+        }
+    }
     public Task(string textinicial)
     {
         Text = textinicial;
         StartDate = DateTime.Today;
         EndDate = DateTime.Today.AddDays(7);
+        Status = Task.State.ToDo;
     }
 }

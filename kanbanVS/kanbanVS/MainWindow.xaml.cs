@@ -38,8 +38,9 @@ namespace kanbanVS
                 {
                     AssignedTo = newTaskWindow.NewTaskResponsable,
                     PriorityColor = newTaskWindow.Color,
-                    startDate = newTaskWindow.DataInici,
-                    endDate = newTaskWindow.DataFi
+                    StartDate = newTaskWindow.DataInici,
+                    EndDate = newTaskWindow.DataFi,
+                    Status = Task.State.ToDo
                 };
 
                 ToDoTasks.Add(newTask);
@@ -101,11 +102,20 @@ namespace kanbanVS
 
                     ScrollViewer sv = sender as ScrollViewer;
                     if (sv == ToDoScrollViewer)
+                    {
                         ToDoTasks.Add(task);
+                        task.Status = Task.State.ToDo;
+                    }
                     else if (sv == InProgressScrollViewer)
+                    {
                         InProgressTasks.Add(task);
+                        task.Status = Task.State.Doing;
+                    }
                     else if (sv == DoneScrollViewer)
+                    {
                         DoneTasks.Add(task);
+                        task.Status = Task.State.Done;
+                    }
                 }
             }
         }
