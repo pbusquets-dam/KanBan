@@ -41,4 +41,9 @@ public class cResponsable : INotifyPropertyChanged
         Nom = nom;
         Cognom = cognom;
     }
+
+    public override string ToString()
+    {
+        return $"{Nom} {Cognom}";
+    }
 }

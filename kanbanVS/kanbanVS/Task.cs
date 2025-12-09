@@ -4,7 +4,7 @@ using System.ComponentModel;
 public class Task : INotifyPropertyChanged
 {
     public string text;
-    public string assignedTo;
+    public cResponsable assignedTo;
     public DateTime startDate;
     public DateTime endDate;
     public string priorityColor;
@@ -30,7 +30,7 @@ public class Task : INotifyPropertyChanged
         }
     }
 
-    public string AssignedTo
+    public cResponsable AssignedTo
     {
         get { return assignedTo; }
         set
@@ -73,9 +73,7 @@ public class Task : INotifyPropertyChanged
     public Task(string textinicial)
     {
         Text = textinicial;
-        AssignedTo = "No assignada";
         StartDate = DateTime.Today;
         EndDate = DateTime.Today.AddDays(7);
-        PriorityColor = "Green";
     }
 }

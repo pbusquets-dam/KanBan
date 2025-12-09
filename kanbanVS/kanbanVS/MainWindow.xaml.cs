@@ -22,29 +22,24 @@ namespace kanbanVS
             InProgressTasks = new ObservableCollection<Task>();
             DoneTasks = new ObservableCollection<Task>();
             Responsables = new ObservableCollection<cResponsable>();
-
-            // Test
-            ToDoTasks.Add(new Task("tasca2") { AssignedTo = "test1", PriorityColor = "Red" });
-            InProgressTasks.Add(new Task("tasca2") { AssignedTo = "test2", PriorityColor = "Yellow" });
-            DoneTasks.Add(new Task("tasca3") { AssignedTo = "test3", PriorityColor = "Green" });
-
             this.DataContext = this;
         }
         //OBRIR TASCA
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NewTaskWindow newTaskWindow = new NewTaskWindow();
+            NewTaskWindow newTaskWindow = new NewTaskWindow(Responsables);
             bool? result = newTaskWindow.ShowDialog();
 
             if (result == true)
             {
                 string taskName = newTaskWindow.NewTaskNameText;
-                string taskDesc = newTaskWindow.NewTaskDescText;
 
                 Task newTask = new Task(taskName)
                 {
-                    AssignedTo = taskDesc,
-                    PriorityColor = "Green"
+                    AssignedTo = newTaskWindow.NewTaskResponsable,
+                    PriorityColor = newTaskWindow.Color,
+                    startDate = newTaskWindow.DataInici,
+                    endDate = newTaskWindow.DataFi
                 };
 
                 ToDoTasks.Add(newTask);
@@ -56,7 +51,7 @@ namespace kanbanVS
             Responsable Responsable = new Responsable();
             bool? result = Responsable.ShowDialog();
 
-            if (result == true)
+            if (result == true && !string.IsNullOrEmpty(Responsable.ResponsableNom))
             {
                 string respNom = Responsable.ResponsableNom;
                 string respCognom = Responsable.ResponsableCognom;
@@ -98,7 +93,7 @@ namespace kanbanVS
             {
                 Task task = e.Data.GetData("kanbanTask") as Task;
 
-                if(task != null)
+                if (task != null)
                 {
                     ToDoTasks.Remove(task);
                     InProgressTasks.Remove(task);
@@ -114,5 +109,53 @@ namespace kanbanVS
                 }
             }
         }
+
+        private void TaskBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.ClickCount == 2)
+            {
+                Border border = sender as Border;
+                Task task = border.Tag as Task;
+
+                if (task != null)
+                {
+                    EditTask(task);
+                }
+            }
+        }
+
+        private void EditTask(Task task)
+        {
+            NewTaskWindow editWindow = new NewTaskWindow(Responsables);
+            editWindow.Eliminar.Visibility = Visibility.Visible;
+            editWindow.TaskTextBox.Text = task.Text;
+            editWindow.ResponsablesComboBox.SelectedItem = task.AssignedTo;
+
+            editWindow.PrioritatAlta.IsChecked = task.PriorityColor == "Red";
+            editWindow.PrioritatMitja.IsChecked = task.PriorityColor == "Yellow";
+            editWindow.PrioritatBaixa.IsChecked = task.PriorityColor == "Green";
+
+            editWindow.DataIniciDatePicker.SelectedDate = task.StartDate;
+            editWindow.DataLimitDatePicker.SelectedDate = task.EndDate;
+
+            bool? result = editWindow.ShowDialog();
+
+            if (editWindow.IsDeleted)
+            {
+                ToDoTasks.Remove(task);
+                InProgressTasks.Remove(task);
+                DoneTasks.Remove(task);
+            }
+
+            if (result == true)
+            {
+                task.Text = editWindow.NewTaskNameText;
+                task.AssignedTo = editWindow.NewTaskResponsable;
+                task.PriorityColor = editWindow.Color;
+                task.StartDate = editWindow.DataInici;
+                task.EndDate = editWindow.DataFi;
+            }
+        }
+
     }
 }

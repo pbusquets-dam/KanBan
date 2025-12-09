@@ -96,12 +96,16 @@
     </Window.Resources>
 
     <Grid Margin="15" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
             <!--Nom Responsable-->
             <TextBlock Margin="0,0,0,5"
                    FontWeight="SemiBold"
@@ -127,7 +131,7 @@
         <StackPanel Grid.Row="1" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Right" 
-                    VerticalAlignment="Bottom">
+                    VerticalAlignment="Bottom" Grid.ColumnSpan="2">
 
             <Button Content="Aceptar" 
                     Click="AcceptButton_Click" 

@@ -119,7 +119,7 @@
                    Foreground="#333333"
                    Text="Responsable:" />
 
-            <ComboBox x:Name="ResponsablesComboBox" ItemsSource="{Binding Responsables}" DisplayMemberPath="Nom" />
+            <ComboBox x:Name="ResponsablesComboBox" ItemsSource="{Binding responsable}" DisplayMemberPath="Nom"/>
 
             <TextBlock Margin="0,0,0,5"
                 FontWeight="SemiBold"
@@ -146,11 +146,19 @@
                 FontWeight="SemiBold"
                 FontSize="14"
                 Foreground="#333333"
-                Text="Data límit:" />
+                Text="Data Inici:" />
 
-            <DatePicker x:Name="DataLimitDatePicker"
+            <DatePicker x:Name="DataIniciDatePicker"
                     Height="30"
                     Margin="0,0,0,15"/>
+            <TextBlock
+                FontWeight="SemiBold"
+                FontSize="14"
+                Foreground="#333333"
+                Text="Data límit:" />
+            <DatePicker x:Name="DataLimitDatePicker"
+                Height="30"
+                    />
 
         </StackPanel>
 
@@ -159,10 +167,19 @@
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Bottom">
 
+            <Button x:Name="Eliminar"
+                Content="Eliminar" 
+                Click="EliminarButton_Click" 
+                Width="80"
+                Margin="0,5,55,5" 
+                Background="Red"
+                Visibility="Collapsed"
+                />
+
             <Button Content="Aceptar" 
                     Click="AcceptButton_Click" 
                     Width="80" 
-                    Margin="0,0,5,0"
+                    Margin="5,0,5,0"
                     IsDefault="True" 
                     />
 

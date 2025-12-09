@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace kanbanVS
 {
@@ -19,8 +7,8 @@ namespace kanbanVS
     /// </summary>
     public partial class Responsable : Window
     {
-        public string ResponsableNom { get; private set; }
-        public string ResponsableCognom { get; private set; }
+        public string ResponsableNom { get; set; }
+        public string ResponsableCognom { get; set; }
 
 
 
@@ -35,6 +23,7 @@ namespace kanbanVS
             ResponsableNom = ResponsableTextBox.Text;
             ResponsableCognom = DescriptionTextBox.Text;
             this.DialogResult = true;
+
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

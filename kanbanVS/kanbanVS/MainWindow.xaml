@@ -97,6 +97,7 @@
                                         Margin="0,5"
                                         Background="White"
                                         MouseMove="TaskBorder_MouseMove"
+                                        MouseLeftButtonDown="TaskBorder_MouseLeftButtonDown"
                                         Tag="{Binding}"
                                         HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Vertical">
@@ -145,6 +146,7 @@
                                         Margin="0,5"
                                         Background="White"
                                         MouseMove="TaskBorder_MouseMove"
+                                        MouseLeftButtonDown="TaskBorder_MouseLeftButtonDown"
                                         Tag="{Binding}"
                                         HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Vertical">
@@ -193,6 +195,7 @@
                                         Margin="0,5"
                                         Background="White"
                                         MouseMove="TaskBorder_MouseMove"
+                                        MouseLeftButtonDown="TaskBorder_MouseLeftButtonDown"
                                         Tag="{Binding}"
                                         HorizontalAlignment="Stretch">
                                     <StackPanel Orientation="Vertical">
