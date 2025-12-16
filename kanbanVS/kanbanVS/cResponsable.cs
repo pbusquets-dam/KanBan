@@ -3,8 +3,7 @@ using System.ComponentModel;
 
 public class cResponsable : INotifyPropertyChanged
 {
-    public string nom;
-    public string cognom;
+    public string usuari;
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -19,31 +18,21 @@ public class cResponsable : INotifyPropertyChanged
 
     public string Nom
     {
-        get { return nom; }
+        get { return usuari; }
         set
         {
-            nom = value;
-            OnPropertyChanged(nameof(nom));
-        }
-    }
-    public string Cognom
-    {
-        get { return cognom; }
-        set
-        {
-            cognom = value;
-            OnPropertyChanged(nameof(cognom));
+            usuari = value;
+            OnPropertyChanged(nameof(usuari));
         }
     }
 
-    public cResponsable(string nom, string cognom)
+    public cResponsable(string nom)
     {
         Nom = nom;
-        Cognom = cognom;
     }
 
     public override string ToString()
     {
-        return $"{Nom} {Cognom}";
+        return Nom;
     }
 }

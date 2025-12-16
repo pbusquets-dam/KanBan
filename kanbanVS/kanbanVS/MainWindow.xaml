@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Kanban Board" Height="600" Width="1000"
         Background="#F5F5F5">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+    </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -54,11 +57,11 @@
                         <DropShadowEffect Color="#CCCCCC" Direction="270" ShadowDepth="1" BlurRadius="5" Opacity="0.6"/>
                     </Setter.Value>
                 </Setter>
-                
+
             </Style>
         </Grid.Resources>
 
-        <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,10">
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,10" Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVisibility}}">
             <Button Style="{StaticResource HeaderButtonStyle}" HorizontalAlignment="Left" Click="Button_Click">
                 <TextBlock FontSize="15">📝</TextBlock>
             </Button>
@@ -70,7 +73,8 @@
         <Border Grid.Row="1" Grid.Column="0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="181*"/>
+                    <ColumnDefinition Width="131*"/>
+                    <ColumnDefinition Width="50*"/>
                     <ColumnDefinition Width="96*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -78,9 +82,9 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="To Do" Style="{StaticResource HeaderStyle}" Grid.ColumnSpan="2"/>
+                <TextBlock Grid.Row="0" Text="To Do" Style="{StaticResource HeaderStyle}" Grid.ColumnSpan="3"/>
 
-                <ScrollViewer x:Name="ToDoScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto" AllowDrop="True" Drop="TasksColumn_Drop" DragOver="TasksColumn_DragOver" Grid.ColumnSpan="2">
+                <ScrollViewer x:Name="ToDoScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto" AllowDrop="True" Drop="TasksColumn_Drop" DragOver="TasksColumn_DragOver" Grid.ColumnSpan="3">
                     <ItemsControl ItemsSource="{Binding ToDoTasks}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,10 +15,16 @@ namespace kanbanVS
         public ObservableCollection<Task> DoneTasks { get; set; }
         public ObservableCollection<cResponsable> Responsables { get; set; }
 
-        public MainWindow()
+        private bool admin = false;
+
+        public bool IsAdmin
+        {
+            get { return admin; }
+        }
+        public MainWindow(bool isAdmin)
         {
             InitializeComponent();
-
+            this.admin = isAdmin;
             ToDoTasks = new ObservableCollection<Task>();
             InProgressTasks = new ObservableCollection<Task>();
             DoneTasks = new ObservableCollection<Task>();
@@ -52,12 +59,11 @@ namespace kanbanVS
             Responsable Responsable = new Responsable();
             bool? result = Responsable.ShowDialog();
 
-            if (result == true && !string.IsNullOrEmpty(Responsable.ResponsableNom))
+            if (result == true && !string.IsNullOrEmpty(Responsable.ResponsableUsuari))
             {
-                string respNom = Responsable.ResponsableNom;
-                string respCognom = Responsable.ResponsableCognom;
-                Console.WriteLine(respNom);
-                cResponsable _responsable = new cResponsable(respNom, respCognom);
+                string respUsuari = Responsable.ResponsableUsuari;
+                Console.WriteLine(respUsuari);
+                cResponsable _responsable = new cResponsable(respUsuari);
                 Responsables.Add(_responsable);
             }
         }
@@ -122,7 +128,7 @@ namespace kanbanVS
 
         private void TaskBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ClickCount == 2)
+            if (e.ClickCount == 2 && IsAdmin)
             {
                 Border border = sender as Border;
                 Task task = border.Tag as Task;
@@ -166,6 +172,11 @@ namespace kanbanVS
                 task.EndDate = editWindow.DataFi;
             }
         }
-
+        //FA QUE CUAN ES TENQUI NO ES QUEDI EN SEGON PLA
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+            base.OnClosing(e);
+        }
     }
 }

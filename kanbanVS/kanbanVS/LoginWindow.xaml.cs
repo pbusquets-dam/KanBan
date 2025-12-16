@@ -1,9 +1,11 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace kanbanVS
 {
     public partial class LoginWindow : Window
     {
+        public bool IsAdmin { get; private set; }
         public LoginWindow()
         {
             InitializeComponent();
@@ -17,6 +19,14 @@ namespace kanbanVS
             if (user == "admin" && pass == "admin")
             {
                 this.DialogResult = true;
+                IsAdmin = true;
+                Close();
+            }
+            else if (user == "user" && pass == "user")
+            {
+                this.DialogResult = true;
+                IsAdmin = false;
+                Close();
             }
             else
             {

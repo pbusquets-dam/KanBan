@@ -11,11 +11,18 @@ namespace kanbanVS
             LoginWindow login = new LoginWindow();
             bool? result = login.ShowDialog();
 
-            if (result == true)
+            if (result == true && login.IsAdmin)
             {
-                MainWindow main = new MainWindow();
+                MainWindow main = new MainWindow(true);
                 Application.Current.MainWindow = main;
                 main.Show();
+            }
+            else if (result == true && !login.IsAdmin)
+            {
+                MainWindow main = new MainWindow(false);
+                Application.Current.MainWindow = main;
+                main.Show();
+                
             }
             else
             {

@@ -7,8 +7,7 @@ namespace kanbanVS
     /// </summary>
     public partial class Responsable : Window
     {
-        public string ResponsableNom { get; set; }
-        public string ResponsableCognom { get; set; }
+        public string ResponsableUsuari { get; set; }
 
 
 
@@ -20,8 +19,7 @@ namespace kanbanVS
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            ResponsableNom = ResponsableTextBox.Text;
-            ResponsableCognom = DescriptionTextBox.Text;
+            ResponsableUsuari = ResponsableTextBox.Text;
             this.DialogResult = true;
 
         }
