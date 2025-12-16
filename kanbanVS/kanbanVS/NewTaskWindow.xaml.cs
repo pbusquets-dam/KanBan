@@ -1,12 +1,7 @@
 ﻿// NewTaskWindow.xaml.cs
 using System;
 using System.Collections.ObjectModel;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace kanbanVS
 {
@@ -36,15 +31,15 @@ namespace kanbanVS
             NewTaskNameText = TaskTextBox.Text;
             NewTaskResponsable = ResponsablesComboBox.SelectedItem as cResponsable;
             this.DialogResult = true;
-            if(PrioritatAlta.IsChecked == true)
+            if (PrioritatAlta.IsChecked == true)
             {
                 Color = "Red";
             }
-            else if(PrioritatMitja.IsChecked == true)
+            else if (PrioritatMitja.IsChecked == true)
             {
                 Color = "Yellow";
             }
-            else if(PrioritatBaixa.IsChecked == true)
+            else if (PrioritatBaixa.IsChecked == true)
             {
                 Color = "Green";
             }
@@ -69,7 +64,7 @@ namespace kanbanVS
                 DataFi = DateTime.Today.Date.AddDays(7);
             }
 
-            
+
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

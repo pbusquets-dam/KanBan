@@ -22,7 +22,7 @@ namespace kanbanVS
                 MainWindow main = new MainWindow(false);
                 Application.Current.MainWindow = main;
                 main.Show();
-                
+
             }
             else
             {

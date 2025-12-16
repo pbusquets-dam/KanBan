@@ -1,37 +1,51 @@
-﻿using System;
+﻿using kanbanVS.APIClient;
+using System;
 using System.Windows;
 
 namespace kanbanVS
 {
     public partial class LoginWindow : Window
     {
+        private readonly UsersApiClient _apiClient = new UsersApiClient();
         public bool IsAdmin { get; private set; }
+
         public LoginWindow()
         {
             InitializeComponent();
         }
 
-        private void Accept_Click(object sender, RoutedEventArgs e)
+        private async void Accept_Click(object sender, RoutedEventArgs e)
         {
-            string user = UserTextBox.Text;
-            string pass = PassBox.Password;
+            try
+            {
+                // agafem usuaris base dades
+                var usuarisApi = await _apiClient.GetAllUsersAsync();
+                bool trobat = false;
 
-            if (user == "admin" && pass == "admin")
-            {
-                this.DialogResult = true;
-                IsAdmin = true;
-                Close();
+                foreach (var u in usuarisApi)
+                {
+                    // mirem si user i pass coincideixen
+                    if (u.Usuari == UserTextBox.Text && u.Contrasenya == PassBox.Password)
+                    {
+                        trobat = true;
+                        // mirem si es l'admin
+                        IsAdmin = (u.Usuari.ToLower() == "admin");
+                    }
+                }
+
+                if (trobat)
+                {
+                    this.DialogResult = true;
+                }
+                else
+                {
+                    MessageBox.Show("Usuari o contrasenya incorrectes", "Error",
+                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else if (user == "user" && pass == "user")
+            catch (Exception ex)
             {
-                this.DialogResult = true;
-                IsAdmin = false;
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("Usuari o contrasenya incorrectes", "Error",
-                                MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error de connexió: " + ex.Message);
             }
         }
 

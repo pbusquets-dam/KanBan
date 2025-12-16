@@ -116,6 +116,14 @@
             <TextBox x:Name="ResponsableTextBox"
                  Height="30"
                  Margin="0,0,0,15"/>
+            <TextBlock
+                FontWeight="SemiBold"
+                FontSize="14"
+                Foreground="#333333"
+                Text="Contrasenya del Responsable:" />
+            <TextBox x:Name="ResponsablePassword"
+                Height="30"
+                 />
         </StackPanel>
 
         <StackPanel Grid.Row="1" 

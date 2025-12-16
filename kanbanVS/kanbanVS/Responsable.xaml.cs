@@ -8,6 +8,7 @@ namespace kanbanVS
     public partial class Responsable : Window
     {
         public string ResponsableUsuari { get; set; }
+        public string ResponsableContrasenya { get; set; }
 
 
 
@@ -20,6 +21,7 @@ namespace kanbanVS
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
             ResponsableUsuari = ResponsableTextBox.Text;
+            ResponsableContrasenya = ResponsablePassword.Text;
             this.DialogResult = true;
 
         }

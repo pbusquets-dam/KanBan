@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 public class cResponsable : INotifyPropertyChanged
 {
@@ -7,6 +6,7 @@ public class cResponsable : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 
+    public int Id { get; set; }
     private void OnPropertyChanged(string propertyName)
     {
         if (PropertyChanged != null)
@@ -14,7 +14,6 @@ public class cResponsable : INotifyPropertyChanged
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
 
     public string Nom
     {

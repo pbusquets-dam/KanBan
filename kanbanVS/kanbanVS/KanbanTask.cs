@@ -2,7 +2,7 @@
 using System.ComponentModel;
 
 
-public class Task : INotifyPropertyChanged
+public class KanbanTask : INotifyPropertyChanged
 {
     public enum State
     {
@@ -17,6 +17,7 @@ public class Task : INotifyPropertyChanged
     public DateTime endDate;
     public string priorityColor;
     private State status;
+    private long codi;
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -36,6 +37,15 @@ public class Task : INotifyPropertyChanged
         {
             text = value;
             OnPropertyChanged(nameof(Text));
+        }
+    }
+    public long Codi
+    {
+        get { return codi; }
+        set
+        {
+            codi = value;
+            OnPropertyChanged(nameof(codi));
         }
     }
 
@@ -84,18 +94,18 @@ public class Task : INotifyPropertyChanged
         get { return status; }
         set
         {
-            if (status != value) 
+            if (status != value)
             {
                 status = value;
                 OnPropertyChanged(nameof(Status));
             }
         }
     }
-    public Task(string textinicial)
+    public KanbanTask(string textinicial)
     {
         Text = textinicial;
         StartDate = DateTime.Today;
         EndDate = DateTime.Today.AddDays(7);
-        Status = Task.State.ToDo;
+        Status = KanbanTask.State.ToDo;
     }
 }
