@@ -10,8 +10,8 @@ Release/
 *.suo
 
 # Paquetes NuGet
-packages/
-*.nupkg
+#packages/
+#*.nupkg
 
 # Archivos temporales
 *.log
