@@ -81,7 +81,7 @@ namespace kanbanVS
                     DataFinal = win.DataFi,
                     Prioritat = win.Color,
                     Estat = "ToDo",
-                    IdResp = win.NewTaskResponsable?.Id ?? 1
+                    IdResp = win.NewTaskResponsable?.Id ?? 3 // si el responsable es null ficara 3 que es el nostre admin de moment
                 };
 
                 await _apiClient.AddTascaAsync(tascaApi); // Enviem a la base de dades
@@ -107,6 +107,7 @@ namespace kanbanVS
                 await _apiClient.AddUserAsync(userApi);
 
                 Responsables.Clear(); // Refresquem la llista de la UI
+                ToDoTasks.Clear(); InProgressTasks.Clear(); DoneTasks.Clear();
                 CarregarDadesInicials();
             }
         }

@@ -34,7 +34,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició GET al endpoint /user/{Id}
-                HttpResponseMessage response = await client.GetAsync($"user/{Id}");
+                HttpResponseMessage response = await client.GetAsync($"users/{Id}");
                 if (response.IsSuccessStatusCode)
                 {
                     //Reposta 204 quan no ha trobat dades
@@ -72,7 +72,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició GET al endpoint /users}
-                HttpResponseMessage response = await client.GetAsync("user");
+                HttpResponseMessage response = await client.GetAsync("users");
                 if (response.IsSuccessStatusCode)
                 {
                     //Obtenim el resultat i el carreguem al objecte llista d'usuaris
@@ -99,7 +99,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició GET al endpoint /user/{Id}
-                HttpResponseMessage response = await client.GetAsync($"user/{Username}");
+                HttpResponseMessage response = await client.GetAsync($"users/{Username}");
                 if (response.IsSuccessStatusCode)
                 {
                     //Reposta 204 quan no ha trobat dades
@@ -137,7 +137,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició POST al endpoint /users}
-                HttpResponseMessage response = await client.PostAsJsonAsync("user", user);
+                HttpResponseMessage response = await client.PostAsJsonAsync("users", user);
                 response.EnsureSuccessStatusCode();
             }
         }
@@ -156,7 +156,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició PUT al endpoint /users/Id
-                HttpResponseMessage response = await client.PutAsJsonAsync($"user/{user.Id}", user);
+                HttpResponseMessage response = await client.PutAsJsonAsync($"users/{user.Id}", user);
                 response.EnsureSuccessStatusCode();
             }
         }
@@ -176,7 +176,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició DELETE al endpoint /users/Id
-                HttpResponseMessage response = await client.DeleteAsync($"user/{Id}");
+                HttpResponseMessage response = await client.DeleteAsync($"users/{Id}");
                 response.EnsureSuccessStatusCode();
             }
         }
@@ -192,7 +192,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició GET al endpoint /user/{Id}
-                HttpResponseMessage response = await client.GetAsync($"user/{Id}");
+                HttpResponseMessage response = await client.GetAsync($"users/{Id}");
                 if (response.IsSuccessStatusCode)
                 {
                     //Reposta 204 quan no ha trobat dades
@@ -230,7 +230,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició GET al endpoint /users}
-                HttpResponseMessage response = await client.GetAsync("tascas");
+                HttpResponseMessage response = await client.GetAsync("tasks");
                 if (response.IsSuccessStatusCode)
                 {
                     //Obtenim el resultat i el carreguem al objecte llista d'usuaris
@@ -259,7 +259,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició POST al endpoint /users}
-                HttpResponseMessage response = await client.PostAsJsonAsync("tascas", tasca);
+                HttpResponseMessage response = await client.PostAsJsonAsync("tasks", tasca);
                 response.EnsureSuccessStatusCode();
             }
         }
@@ -278,7 +278,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició PUT al endpoint /users/Id
-                HttpResponseMessage response = await client.PutAsJsonAsync($"tascas/{tasca.Codi}", tasca);
+                HttpResponseMessage response = await client.PutAsJsonAsync($"tasks/{tasca.Codi}", tasca);
                 response.EnsureSuccessStatusCode();
             }
         }
@@ -298,7 +298,7 @@ namespace kanbanVS.APIClient
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Enviem una petició DELETE al endpoint /users/Id
-                HttpResponseMessage response = await client.DeleteAsync($"tascas/{Codi}");
+                HttpResponseMessage response = await client.DeleteAsync($"tasks/{Codi}");
                 response.EnsureSuccessStatusCode();
             }
         }

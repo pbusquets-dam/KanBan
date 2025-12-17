@@ -27,9 +27,11 @@ namespace kanbanVS
                     // mirem si user i pass coincideixen
                     if (u.Usuari == UserTextBox.Text && u.Contrasenya == PassBox.Password)
                     {
+                        if (u.EsAdmin == true || u.Usuari == "admin")
+                        {
+                            IsAdmin = true;
+                        }
                         trobat = true;
-                        // mirem si es l'admin
-                        IsAdmin = (u.Usuari.ToLower() == "admin");
                     }
                 }
 
