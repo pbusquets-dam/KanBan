@@ -1,5 +1,7 @@
 ﻿using kanbanVS.APIClient;
 using System;
+using System.Configuration;
+using System.Net.Http;
 using System.Windows;
 
 namespace kanbanVS
@@ -27,11 +29,11 @@ namespace kanbanVS
                     // mirem si user i pass coincideixen
                     if (u.Usuari == UserTextBox.Text && u.Contrasenya == PassBox.Password)
                     {
-                        if (u.EsAdmin == true || u.Usuari == "admin")
-                        {
-                            IsAdmin = true;
-                        }
-                        trobat = true;
+                        if (u.EsAdmin == true)
+                            {
+                                IsAdmin = true;
+                            }
+                            trobat = true;
                     }
                 }
 
